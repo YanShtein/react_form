@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -10,4 +12,117 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.container {
+  height: 100vh;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px;
+  border: 1px solid rgb(220, 220, 220);
+  border-radius: 6px;
+}
+
+.select_comp {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.select_comp h1 {
+  margin: 0;
+  cursor: pointer;
+  width: 50%;
+  text-align: center;
+  font-weight: 300;
+  padding: 5px 8px;
+  color: #6d6d6d;
+}
+
+.selected {
+  color: #000000 !important;
+  border: 1px solid #002f6c;
+  border-radius: 6px;
+  background-color: #dae0ea;
+}
+
+.form_section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.submit {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.new-account {
+  font-size: 18px;
+  font-weight: 300;
+  text-align: center;
+  border-bottom: 1px solid black;
+}
+
+.submit button {
+  cursor: pointer;
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 18px;
+}
+
+button:hover {
+  border: 1px solid #002f6c;
+}
+
+.inline-error {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+label {
+  color: #002f6c;
+  font-size: 18px;
+  margin-bottom: 3px;
+}
+
+.required::after {
+  content: ' * ';
+  color: red;
+}
+
+small {
+  color: red;
+}
+
+input {
+  height: 35px;
+  font-size: 18px;
+  color: black;
+  border: 1px solid #002f6c;
+  border-radius: 4px;
+  padding: 0 10px;
+}
+
+input::placeholder {
+  color: #c0c0c0;
+  font-size: 16px;
 }
