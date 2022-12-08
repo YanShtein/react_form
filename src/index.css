@@ -126,3 +126,13 @@ input::placeholder {
   color: #c0c0c0;
   font-size: 16px;
 }
+
+.password {
+  font-size: 14px;
+}
+
+.password p {
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+}

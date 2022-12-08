@@ -24,7 +24,9 @@ export default function Register() {
         .email('Invalid email address')
         .required('Required'),
       password: Yup.string()
-        .min(8, 'Please enetr a valid password')
+        .min(8, 'Must be between 8 - 12 characters.')
+        .max(12, 'Must be between 8 and 12 characters.')
+        .matches(/[0-9a-zA-z!@#$%^&*]/, 'Password not match rules.')
         .required('Required'),
     }),
     
@@ -81,15 +83,24 @@ export default function Register() {
           <small>{formik.errors.email}</small> : null}
       </div>
       <div className='form_section'>
-        <label htmlFor='password'>Password</label>
+        <label htmlFor='password'>Create Password</label>
         <input 
           id='password'
           type='password'
-          placeholder='min 8 characters'
+          placeholder='Password'
           {...formik.getFieldProps('password')}
         />
         {formik.touched.password && formik.errors.password ? 
           <small>{formik.errors.password}</small> : null}
+        <div className='password'>
+          <p>Password must be:</p>
+          <p>• Between 8 - 12 characters.</p>
+          <p>• At least one of the following:</p>
+          <p>- An upper case character.</p>  
+          <p>- A lower case character.</p>  
+          <p>- An special character.</p>  
+          <p>- A number.</p>  
+        </div>
       </div>
       <div className='submit'>
         <button type='submit'>Create account</button>
