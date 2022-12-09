@@ -52,6 +52,7 @@ code {
   font-weight: 300;
   padding: 5px 8px;
   color: #6d6d6d;
+  font-size: 26px;
 }
 
 .selected {
@@ -68,9 +69,8 @@ code {
   margin-top: 20px;
 }
 
-.submit {
-  text-align: center;
-  margin-top: 20px;
+.errors {
+  color: red;
 }
 
 .new-account {
@@ -80,16 +80,23 @@ code {
   border-bottom: 1px solid black;
 }
 
+.submit {
+  text-align: center;
+  margin-top: 20px;
+}
+
 .submit button {
   cursor: pointer;
   border: 1px solid #dcdcdc;
   border-radius: 6px;
   padding: 10px;
   font-size: 18px;
+  font-family: inherit;
 }
 
 button:hover {
   border: 1px solid #002f6c;
+  color: #002f6c;
 }
 
 .inline-error {
@@ -109,10 +116,6 @@ label {
   color: red;
 }
 
-small {
-  color: red;
-}
-
 input {
   height: 35px;
   font-size: 18px;
@@ -120,6 +123,7 @@ input {
   border: 1px solid #002f6c;
   border-radius: 4px;
   padding: 0 10px;
+  font-family: inherit;
 }
 
 input::placeholder {
@@ -131,8 +135,15 @@ input::placeholder {
   font-size: 14px;
 }
 
-.password p {
+.password small {
+  display: block;
   font-size: 14px;
   margin: 0;
   padding: 0;
+}
+
+@media (max-width: 591px) and (max-height: 950px) {
+  .form {
+    border: none;
+  }
 }
