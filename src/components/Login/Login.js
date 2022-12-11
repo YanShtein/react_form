@@ -1,10 +1,10 @@
 import { useFormik } from 'formik';
 import { useEffect } from 'react';
 import * as Yup from 'yup';
-import useLogin from '../useLogin';
+import useLogin from './useLogin';
 
 export default function Login() {
-  const { response, submitLogin } = useLogin();
+  const { response, submitLogin, isLoading } = useLogin();
 
   const formik = useFormik({
     initialValues: {
@@ -14,10 +14,9 @@ export default function Login() {
 
     validationSchema: Yup.object({
       email: Yup.string()
-        .email('Invalid email address')
+        .email('The username or password you entered is incorrect, please try again.')
         .required('Required'),
       password: Yup.string()
-        .min(8, 'Min 8 characters.')
         .required('Required'),
     }),
     
@@ -27,13 +26,17 @@ export default function Login() {
     }
   });
 
+  function handleKeyPress(e) {
+    if (e.keyCode === 13) { 
+      e.target.blur();
+    }
+  }
+
   useEffect(() => {
     if (response && response.type === 'success') {
       formik.resetForm();
     }
   }, [response])
-
-  // login if email but not password
 
   return (
     <form onSubmit={formik.handleSubmit}>
@@ -45,6 +48,7 @@ export default function Login() {
           autoComplete=''
           placeholder='example@example.com'
           {...formik.getFieldProps('email')}
+          onKeyUp={handleKeyPress}
         />
         {formik.touched.email && formik.errors.email ? 
           <small className='errors'>{formik.errors.email}</small> : null}
@@ -56,16 +60,19 @@ export default function Login() {
           type='password'
           placeholder='Password'
           {...formik.getFieldProps('password')}
+          onKeyUp={handleKeyPress}
         />
         {formik.touched.password && formik.errors.password ? 
           <small className='errors'>{formik.errors.password}</small> : null}
       </div>
       <div className='submit'>
         <button type='submit'>
-          Login to your account
+          {isLoading ? 'Loading...' : 'Login to your account'}
         </button>
         {
           response === null ? null :
+          response.type === 'error' ? 
+          <p className='errors'>{response.message}</p> :
           <p>{response.message}</p>
         }
       </div>

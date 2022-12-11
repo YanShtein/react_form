@@ -1,10 +1,10 @@
 import { useFormik } from 'formik';
 import { useEffect } from 'react';
 import * as Yup from 'yup';
-import useResponse from '../useResponse';
+import useRegister from './useRegister';
 
 export default function Register() {
-  const { submit, isLoading, response } = useResponse();
+  const { response, submitRegister, isLoading } = useRegister();
 
   const formik = useFormik({
     initialValues: {
@@ -33,17 +33,21 @@ export default function Register() {
     
     onSubmit: (values) => {
       console.log({Register: values});
-      submit(formik.values);
+      submitRegister(values.email);
     }
   });
+
+  function handleKeyPress(e) {
+    if (e.keyCode === 13) { 
+      e.target.blur();
+    }
+  }
 
   useEffect(() => {
     if (response && response.type === 'success') {
       formik.resetForm();
     }
   }, [response]);
-
-  // register check if email exist
   
   return (
     <form onSubmit={formik.handleSubmit}>
@@ -58,6 +62,7 @@ export default function Register() {
           type='text'
           placeholder='First Name'
           {...formik.getFieldProps('firstName')}
+          onKeyUp={handleKeyPress}
         />
         {formik.touched.firstName && formik.errors.firstName ? 
           <small className='errors'>{formik.errors.firstName}</small> : null}
@@ -72,6 +77,7 @@ export default function Register() {
           type='text'
           placeholder='Last Name'
           {...formik.getFieldProps('lastName')}
+          onKeyUp={handleKeyPress}
         />
         {formik.touched.lastName && formik.errors.lastName ? 
           <small className='errors'>{formik.errors.lastName}</small> : null}
@@ -84,8 +90,9 @@ export default function Register() {
         <input 
           id='email'
           type='email'
-          placeholder='example@email.com'
+          placeholder='example@example.com'
           {...formik.getFieldProps('email')}
+          onKeyUp={handleKeyPress}
         />
         {formik.touched.email && formik.errors.email ? 
           <small className='errors'>{formik.errors.email}</small> : null}
@@ -100,6 +107,7 @@ export default function Register() {
           type='password'
           placeholder='Password'
           {...formik.getFieldProps('password')}
+          onKeyUp={handleKeyPress}
         />
         {formik.touched.password && formik.errors.password ? 
           <small className='errors'>{formik.errors.password}</small> : null}
@@ -117,8 +125,12 @@ export default function Register() {
         <button type='submit'>
           {isLoading ? 'Loading...' : 'Create account'}
         </button>
-        <p>{response && 'Success!'}</p>
-        {/* {response.type === 'success' ? <p>{response.message}</p> : <p>{response.message}</p>} */}
+        {
+          response === null ? null :
+          response.type === 'error' ? 
+          <p className='errors'>{response.message}</p> :
+          <p>{response.message}</p>
+        }
       </div>
     </form>
   )
