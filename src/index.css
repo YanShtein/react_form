@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 
+:root {
+  --borderRadius: 4px;
+  --borderColor: 1px solid #002f6c;
+  --borderGrey: 1px solid #e0e0e0;
+  --textColor: #002f6c;
+}
+
 body {
   margin: 0;
   font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -15,13 +22,20 @@ code {
 }
 
 .container {
-  height: 100vh;
-  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.testing {
+  margin: 40px auto;
+  text-align: center;
+}
+
+.testing p {
+  margin: 0;
 }
 
 .form {
@@ -30,7 +44,7 @@ code {
   flex-direction: column;
   justify-content: center;
   padding: 50px;
-  border: 1px solid rgb(220, 220, 220);
+  border: var(--borderGrey);
   border-radius: 6px;
 }
 
@@ -38,7 +52,7 @@ code {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border: 1px solid #e0e0e0;
+  border: var(--borderGrey);
   border-radius: 6px;
   margin-bottom: 10px;
   font-size: 15px;
@@ -57,7 +71,7 @@ code {
 
 .selected {
   color: #000000 !important;
-  border: 1px solid #002f6c;
+  border: var(--borderColor);
   border-radius: 6px;
   background-color: #dae0ea;
 }
@@ -87,7 +101,7 @@ code {
 
 .submit button {
   cursor: pointer;
-  border: 1px solid #dcdcdc;
+  border: var(--borderGrey);
   border-radius: 6px;
   padding: 10px;
   font-size: 18px;
@@ -95,8 +109,8 @@ code {
 }
 
 button:hover {
-  border: 1px solid #002f6c;
-  color: #002f6c;
+  border: var(--borderColor);
+  color: var(--textColor);
 }
 
 .inline-error {
@@ -106,7 +120,7 @@ button:hover {
 }
 
 label {
-  color: #002f6c;
+  color: var(--textColor);
   font-size: 18px;
   margin-bottom: 3px;
 }
@@ -120,7 +134,7 @@ input {
   height: 35px;
   font-size: 18px;
   color: black;
-  border: 1px solid #002f6c;
+  border: var(--borderColor);
   border-radius: 4px;
   padding: 0 10px;
   font-family: inherit;

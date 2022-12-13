@@ -3,19 +3,19 @@ const users = [
     id: '1',
     user: 'Helly Shwartz',
     email: 'helly@gmail.com',
-    password: 'Passwordhelly',
+    password: 'Pass1$james',
   },
   {
     id: '2',
     user: 'James Potter',
     email: 'james@gmail.com',
-    password: 'Passwordjames',
+    password: 'Pass2$james',
   },
   {
     id: '3',
     user: 'example',
-    email: 'example@example.com',
-    password: 'Password',
+    email: 'user@example.com',
+    password: 'Pass3$user',
   },
 ];
 

@@ -25,7 +25,12 @@ const useRegister = () => {
       } else {
         setResponse({
           type: 'success',
-          message: `${email} succesfully created!`,
+          style: {
+            border: '1px solid red',
+            padding: '5px',
+            borderRadius: '6px',
+          },
+          message: `An email with confirmation has been sent to ${email}!`,
         })
       }
     } catch (error) {

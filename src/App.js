@@ -8,6 +8,12 @@ export default function App() {
 
   return (
     <div className='container'>
+      <div className='testing'>
+        <p>Test login?, try:</p>
+        <hr/>
+        <p>Email: user@example.com</p>
+        <p>Password: Pass3$user</p>
+      </div>
       <div className='form'>
         <div className='select_comp'>
           <h1 

@@ -24,7 +24,7 @@ const useLogin = () => {
       } else {
         setResponse({
           type: 'error',
-          message: `The username or password you entered is incorrect, please try again.`,
+          message: `The email or password you entered is incorrect, please try again.`,
         })
       }
     } catch (error) {

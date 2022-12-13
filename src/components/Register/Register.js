@@ -16,18 +16,18 @@ export default function Register() {
 
     validationSchema: Yup.object({
       firstName: Yup.string()
-        .max(15, 'Must be 15 characters or less')
+        .max(20, 'Must be 20 characters or less')
         .required('Required'),
       lastName: Yup.string()
-        .max(15, 'Must be 15 characters or less')
+        .max(20, 'Must be 20 characters or less')
         .required('Required'),
       email: Yup.string()
         .email('Invalid email address')
         .required('Required'),
       password: Yup.string()
-        .min(8, 'Must be between 8 - 12 characters.')
-        .max(12, 'Must be between 8 and 12 characters.')
-        .matches(/[0-9a-zA-z!@#$%^&*]/, 'Password not match rules.')
+        .min(8, 'Must be between 8 - 12 characters')
+        .max(12, 'Must be between 8 and 12 characters')
+        .matches(/[0-9a-zA-z!@#$%^&*]/, 'Password not match rules')
         .required('Required'),
     }),
     
@@ -113,7 +113,7 @@ export default function Register() {
           <small className='errors'>{formik.errors.password}</small> : null}
         <div className='password'>
           <small>Password must be:</small>
-          <small>• Between 8 - 12 characters.</small>
+          <small>• Between 8 - 12 characters</small>
           <small>• At least one of the following:</small>
           <small>- An upper case character</small>  
           <small>- A lower case character</small>  
@@ -129,7 +129,7 @@ export default function Register() {
           response === null ? null :
           response.type === 'error' ? 
           <p className='errors'>{response.message}</p> :
-          <p>{response.message}</p>
+          <p style={response.style}>{response.message}</p>
         }
       </div>
     </form>

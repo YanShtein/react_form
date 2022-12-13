@@ -14,7 +14,7 @@ export default function Login() {
 
     validationSchema: Yup.object({
       email: Yup.string()
-        .email('The username or password you entered is incorrect, please try again.')
+        .email('Invalid email address')
         .required('Required'),
       password: Yup.string()
         .required('Required'),
