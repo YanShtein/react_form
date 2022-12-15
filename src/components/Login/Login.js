@@ -30,13 +30,13 @@ export default function Login() {
     if (e.keyCode === 13) { 
       e.target.blur();
     }
-  }
+  };
 
   useEffect(() => {
     if (response && response.type === 'success') {
       formik.resetForm();
     }
-  }, [response])
+  }, [response]);
 
   return (
     <form onSubmit={formik.handleSubmit}>
